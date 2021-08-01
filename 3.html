@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{margin-top: 30px;
+            list-style:none;
+            display: flex;
+         }
+
+        a {
+            padding: 16px;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Создать меню</h1>
+    <form name="formMenu">
+        <p>Пункты меню: <input type="text" size= '50' name='elemMenu' value="Главная, О компании, Новости"></p><br>
+        <p>Цвет текста: <input type="color" name = 'fColor' value='#FFFFFF'></p><br>
+        <p>Цвет фона: <input type="color" name = 'bColor' value='#2E9AFE'></p><br>
+        <p>Цвет hover: <input type="color" name = 'hColor' value='#FF8000'></p><br>
+
+        <p><input type="button" name='but' value='Создать меню' onclick= "menu()"> </p>
+
+
+    </form>
+    <style id='myStyle'></style>
+    <p id="myMenu"></p>
+
+    <img id = "image" src=" " onClick="imgsrc();">
+    <!-- <img src="images/1.jpg"> -->
+
+
+
+    <!-- <ul>
+
+        <li><a href="#">Главная</a></li>
+        <li><a href="#">О компании</a></li>
+        <li><a href="#">Новости</a></li>
+
+    </ul> -->
+    
+  
+    <script>
+
+
+        function menu(){
+            elemMenu = formMenu.elemMenu.value;
+            fColor = formMenu.fColor.value;
+            bColor = formMenu.bColor.value;
+            hColor = formMenu.hColor.value;
+
+            
+
+            arrMenu = elemMenu.split(', ');
+            
+
+            let s = "", s1 = "", myList='';
+            for(i=0; i<arrMenu.length; i++){
+                s+= `<li><a href="#" onClick="imgsrc();">${arrMenu[i]}</a></li> `
+            }
+            myList=`<ul>${s}</ul>`;
+
+            s1 = `
+            a {
+                background: ${bColor};
+                color: ${fColor};
+             }
+             
+            a:hover { background: ${hColor} }
+            `;
+
+             myStyle.innerHTML=s1;
+             myMenu.innerHTML = myList;
+             formMenu.but.value = 'Изменить меню';
+
+        }
+
+            let k=0;
+            
+            let imgs=['images/1.jpg','images/2.jpg', 'images/3.jpg', 'images/4.jpg', 'images/5.jpg', 'images/6.jpg',
+             'images/7.jpg', 'images/8.jpg','images/9.jpg'];
+            function imgsrc(){
+                k%=imgs.length; 
+                image.src=imgs[k];
+                k++;
+            }
+
+
+
+    </script>
+    
+</body>
+</html>
